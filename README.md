@@ -3,8 +3,8 @@ haskell
 
 map operations
 --------------
-* monoidic operations on elements inserted into a map. 
-	* for eg., Perform aggregation of values as data items are observed
+* monoidic operations on elements inserted into a container. 
+	* for eg., Continuously perform aggregation of values upon changes to the container. Should be monoidic.
 
 Grouping operations
 -------------------
