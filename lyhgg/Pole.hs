@@ -65,6 +65,7 @@ sitSequence = do { p1 <- sitLeftWithLogging 1 startingPole;
 -- Model the Pole oprations (sitLeft and sitRight) as a State computation that operate on a state (Pole)
 -- Advantages: we can have a sequnce of state computations as one operation that take an initial state as a parameter. The state is then changed by every computation and passed on to the next computation.
 -- For now model a sitLeft and sitRight such that the state is a (Maybe Pole)
+-- Notice how the do {pole <- s;} is written. It operates on the state (Maybe Pole). If its nothing, then the computation evaluates to Nothing.
 sitLeftModifyState :: Int -> State (Maybe Pole) ()
 sitLeftModifyState n = state (\s -> ((), do {pole <- s; sitLeft n pole}))
 
@@ -72,3 +73,4 @@ sitRightModifyState :: Int -> State (Maybe Pole) ()
 sitRightModifyState n = state (\s -> ((), do {pole <- s; sitRight n pole}))
 
 sitStateSteps = do { sitLeftModifyState 1; sitRightModifyState 2; sitRightModifyState 2; sitLeftModifyState 2;}
+
